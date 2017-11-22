@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from "react";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 import classnames from "classnames";
 
 export default class DateTimePickerYears extends Component {
@@ -8,7 +9,7 @@ export default class DateTimePickerYears extends Component {
     viewDate: PropTypes.object.isRequired,
     selectedDate: PropTypes.object.isRequired,
     setViewYear: PropTypes.func.isRequired
-  }
+  };
 
   renderYears = () => {
     var classes, i, year, years;
@@ -19,29 +20,43 @@ export default class DateTimePickerYears extends Component {
     while (i < 11) {
       classes = {
         year: true,
-        old: i === -1 | i === 10,
+        old: (i === -1) | (i === 10),
         active: this.props.selectedDate.year() === year
       };
-      years.push(<span className={classnames(classes)} key={year}onClick={this.props.setViewYear}>{year}</span>);
+      years.push(
+        <span
+          className={classnames(classes)}
+          key={year}
+          onClick={this.props.setViewYear}
+        >
+          {year}
+        </span>
+      );
       year++;
       i++;
     }
     return years;
-  }
+  };
 
   render() {
     var year;
     year = parseInt(this.props.viewDate.year() / 10, 10) * 10;
     return (
-      <div className="datepicker-years" style={{display: "block"}}>
+      <div className="datepicker-years" style={{ display: "block" }}>
         <table className="table-condensed">
           <thead>
             <tr>
-              <th className="prev" onClick={this.props.subtractDecade}>‹</th>
+              <th className="prev" onClick={this.props.subtractDecade}>
+                ‹
+              </th>
 
-              <th className="switch" colSpan="5">{year} - {year + 9}</th>
+              <th className="switch" colSpan="5">
+                {year} - {year + 9}
+              </th>
 
-              <th className="next" onClick={this.props.addDecade}>›</th>
+              <th className="next" onClick={this.props.addDecade}>
+                ›
+              </th>
             </tr>
           </thead>
 
@@ -55,4 +70,3 @@ export default class DateTimePickerYears extends Component {
     );
   }
 }
-
