@@ -1,3 +1,7 @@
+Attention!!!
+============
+This is a dependency of the [open_listings](https://www.github.com/opendoor-labs/open_listings) repo. Do not delete!!
+
 ⚠️ [DEPRECATED] react-bootstrap-datetimepicker
 ===============================
 
